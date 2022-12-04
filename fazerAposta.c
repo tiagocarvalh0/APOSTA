@@ -35,7 +35,7 @@ void dataAtual() {
 void fazerAposta() {
     arqApostaAtual = fopen("APOSTA_RECENTE.txt", "w");
     arqHistoricoAposta = fopen("HISTORICO_APOSTA.lib", "ab");
-    arqHistoricoApostaTXT = fopen("HISTORICO_APOSTA_EXCEL.txt", "a");
+    arqHistoricoApostaCSV = fopen("HISTORICO_APOSTA.csv", "a+");
     arqNumeroBilhete = fopen("NUMERO_BILHETE.lib", "ab+");
 
     if((arqApostaAtual == NULL) || (arqHistoricoAposta == NULL) || (arqNumeroBilhete == NULL)) {
@@ -87,7 +87,7 @@ void fazerAposta() {
         printf("APOSTA FEITA\n");
         fclose(arqApostaAtual);
         fclose(arqHistoricoAposta);
-        fclose(arqHistoricoApostaTXT);
+        fclose(arqHistoricoApostaCSV);
         fclose(arqNumeroBilhete);
         system("APOSTA_RECENTE.txt");
     }
@@ -116,20 +116,15 @@ void salvarArquivoAtual() {
 }
 
 void salvarArquivoNoHistorico() {
-    /*fprintf(arqHistoricoApostaTXT, "%d, %02d/%02d/%02d, %02d:%02d, %s, ", cadastro.numBilhete1, cadastro.diaAposta1, cadastro.mesAposta1, cadastro.anoAposta1, );
+    
+    fprintf(arqHistoricoApostaCSV, "%04d,", cadastro.numBilhete1);
+    fprintf(arqHistoricoApostaCSV,"%02d/%02d/%02d,", cadastro.diaAposta1, cadastro.mesAposta1, cadastro.anoAposta1);
+    fprintf(arqHistoricoApostaCSV, "%02d:%02d,", cadastro.horaAposta1, cadastro.minAposta1);
+    fprintf(arqHistoricoApostaCSV, "%s,", local[cadastro.localAposta - 1]);
     if(cadastro.localAposta == 1)
-        fprintf(arqApostaAtual, "%s,", horarioLocalRJ[cadastro.horarioAposta - 1]);
+        fprintf(arqHistoricoApostaCSV, "%s,", horarioLocalRJ[cadastro.horarioAposta - 1]);
     else    
-        fprintf(arqApostaAtual, "%s,", horarioLocalCE[cadastro.horarioAposta - 1]);
-    fprintf(arqHistoricoApostaTXT, "R$ %.02f, %s\n")*/
-    fprintf(arqHistoricoApostaTXT, "%04d,", cadastro.numBilhete1);
-    fprintf(arqHistoricoApostaTXT,"%02d/%02d/%02d,", cadastro.diaAposta1, cadastro.mesAposta1, cadastro.anoAposta1);
-    fprintf(arqHistoricoApostaTXT, "%02d:%02d,", cadastro.horaAposta1, cadastro.minAposta1);
-    fprintf(arqHistoricoApostaTXT, "%s,", local[cadastro.localAposta - 1]);
-    if(cadastro.localAposta == 1)
-        fprintf(arqHistoricoApostaTXT, "%s,", horarioLocalRJ[cadastro.horarioAposta - 1]);
-    else    
-        fprintf(arqHistoricoApostaTXT, "%s,", horarioLocalCE[cadastro.horarioAposta - 1]);
-    fprintf(arqHistoricoApostaTXT, "R$ %.02f,", cadastro.valorAposta);
-    fprintf(arqHistoricoApostaTXT, "%s\n", animal[cadastro.animalAposta - 1]);
+        fprintf(arqHistoricoApostaCSV, "%s,", horarioLocalCE[cadastro.horarioAposta - 1]);
+    fprintf(arqHistoricoApostaCSV, "R$ %.02f,", cadastro.valorAposta);
+    fprintf(arqHistoricoApostaCSV, "%s\n", animal[cadastro.animalAposta - 1]);
 }

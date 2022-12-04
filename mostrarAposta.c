@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "var.h"
 
 int main() {
-    system("cls");
+    //system("cls");
     arqHistoricoAposta = fopen("HISTORICO_APOSTA.lib", "ab+");
 
     if(arqHistoricoAposta == NULL)
@@ -27,6 +28,6 @@ int main() {
         }
     }
     fclose(arqHistoricoAposta);
-    system("LISTA.xlsx");
+    system("HISTORICO_APOSTA.csv");
     system("pause");
 }

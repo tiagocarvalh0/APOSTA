@@ -1,0 +1,9 @@
+================
+BILHETE: 0007
+DATA: 03/12/22
+EMITIDO: 15:04
+LOCAL: RJ
+HORARIO: 14:20
+VALOR:R$ 2.10
+ANIMAL: VACA
+================

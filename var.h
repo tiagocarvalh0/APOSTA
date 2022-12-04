@@ -1,12 +1,21 @@
 #include <stdio.h>
 #define x 0
+#define TAM_STRING 15
 
     FILE *arqApostaAtual;
     FILE *arqHistoricoAposta;
-    FILE *arqHistoricoApostaTXT;
+    FILE *arqHistoricoApostaCSV;
     FILE *arqNumeroBilhete;
     
     const typedef enum {FAZER_APOSTA = 1, MOSTRAR_APOSTA, INFORMAR_GANHADOR, MOSTRAR_APOSTA_GANHADORA, EXCLUIR_APOSTA, MOSTRAR_APOSTA_ANTIGAS, SAIR} TIPO_OPCAO;
+
+    const char NOME_BILHETE[TAM_STRING] = {"BILHETE"};
+    const char NOME_DATA[TAM_STRING] = {"DATA"};
+    const char NOME_EMITIDO[TAM_STRING] = {"EMITIDO"};
+    const char NOME_LOCAL[TAM_STRING] = {"LOCA,"};
+    const char NOME_HORARIO[TAM_STRING] = {"HORARIO"};
+    const char NOME_VALOR[TAM_STRING] = {"VALOR"};
+    const char NOME_ANIMAL[TAM_STRING] = {"ANIMAL"};
     
     const typedef enum{RJ = 1, CE} T_LOCAL;
     const char local[2][5] = {"RJ", "CE"};
